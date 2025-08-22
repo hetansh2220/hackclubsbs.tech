@@ -9,21 +9,21 @@ const socialLinks = [
   {
     name: "GitHub",
     icon: Github,
-    url: "https://github.com/hackclubsbs",
+    url: "https://github.com/HackClubSBS",
     description: "Explore our open source projects and contribute to the community",
 
   },
   {
     name: "Discord",
     icon: MessageCircle,
-    url: "https://discord.gg/hackclubsbs",
+    url: "https://discord.gg/XP72PfRYEw",
     description: "Join our Discord server for real-time discussions and support",
 
   },
   {
     name: "Instagram",
     icon: Instagram,
-    url: "https://instagram.com/hackclubsbs",
+    url: "https://www.instagram.com/hackclubsbs?igsh=eXhkNms4N3FhbDE1",
     description: "Follow us for behind-the-scenes content and event highlights",
 
   },
@@ -36,7 +36,7 @@ const socialLinks = [
   {
     name: "Twitter",
     icon: Twitter,
-    url: "https://twitter.com/hackclubsbs",
+    url: "https://x.com/hackclubsbs",
     description: "Get the latest updates, announcements, and tech insights",
   },
   {
@@ -131,7 +131,7 @@ export function SocialHubSection() {
                 className="bg-hackclub-red hover:bg-hackclub-red/90 text-white hover:scale-105 transition-all duration-200"
                 asChild
               >
-                <a href="https://discord.gg/hackclubsbs" target="_blank" rel="noopener noreferrer">
+                <a href="https://discord.gg/XP72PfRYEw" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="h-5 w-5 mr-2" />
                   Join Discord
                 </a>
@@ -142,7 +142,7 @@ export function SocialHubSection() {
                 className="border-hackclub-red text-hackclub-red hover:bg-hackclub-red hover:text-white hover:scale-105 transition-all duration-200 bg-transparent"
                 asChild
               >
-                <a href="https://github.com/hackclubsbs" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/HackClubSBS" target="_blank" rel="noopener noreferrer">
                   <Github className="h-5 w-5 mr-2" />
                   Follow on GitHub
                 </a>
