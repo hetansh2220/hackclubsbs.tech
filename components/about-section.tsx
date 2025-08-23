@@ -7,29 +7,30 @@ import { Code, Users, Lightbulb, Trophy } from "lucide-react"
 const features = [
   {
     icon: Code,
-    title: "Hands-on Learning",
+    title: "Learning",
     description:
       "Gain practical experience by working on real-world projects, exploring emerging technologies, and building solutions that matter.",
   },
   {
     icon: Users,
-    title: "Thriving Community",
+    title: "Community",
     description:
       "Be part of a collaborative ecosystem of passionate peers, mentors, and tech enthusiasts who support and inspire each other.",
   },
   {
     icon: Lightbulb,
-    title: "Innovation & Creativity",
+    title: "Innovation",
     description:
       "Unlock your potential to think differently, experiment fearlessly, and bring groundbreaking ideas to life.",
   },
   {
     icon: Trophy,
-    title: "Opportunities to Excel",
+    title: "Excellence",
     description:
       "Showcase your talent at hackathons, coding challenges, and global competitions, gaining recognition and invaluable experience.",
   },
 ]
+
 
 
 const teamMembers = [
