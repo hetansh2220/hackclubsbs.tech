@@ -98,15 +98,19 @@ export function HeroSection() {
       >
         {/* === NEW HEADLINE === */}
         {/* === NEW HEADLINE (Single Tagline) === */}
-        <h1
-          className={`text-4xl sm:text-5xl lg:text-7xl font-extrabold mb-8 tracking-tight transition-all duration-1000 delay-300 
-    ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-        >
-          <span className="transition-all duration-700 bg-gradient-to-r from-hackclub-red to-hackclub-red bg-[length:0%_100%] bg-no-repeat bg-left hover:bg-[length:100%_100%] bg-clip-text">
-        Unleash Your Potential, Hack the Limits
-          </span>
-          
-        </h1>
+       <h1
+  className={`text-4xl sm:text-5xl lg:text-7xl font-extrabold mb-8 tracking-tight transition-all duration-1000 delay-300 
+  ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+>
+  <span className="transition-all duration-700 bg-gradient-to-r from-hackclub-red to-hackclub-red bg-[length:0%_100%] bg-no-repeat bg-left hover:bg-[length:100%_100%] bg-clip-text">
+    Unleash Your Potential,
+  </span>
+  <br />
+  <span className="transition-all duration-700 bg-gradient-to-r from-hackclub-red to-hackclub-red bg-[length:0%_100%] bg-no-repeat bg-left hover:bg-[length:100%_100%] bg-clip-text">
+    Hack the Limits
+  </span>
+</h1>
+
 
 
 

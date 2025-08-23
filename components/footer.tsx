@@ -1,6 +1,7 @@
 "use client"
 
-import { Github, MessageCircle, Instagram, Linkedin, Twitter, Heart } from "lucide-react"
+import { GithubLogo, DiscordLogo, InstagramLogo, LinkedinLogo, TwitterLogo, WhatsappLogo } from "phosphor-react"
+import { Heart } from "lucide-react"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -25,11 +26,12 @@ export function Footer() {
             </p>
             <div className="flex space-x-4">
               {[
-                { icon: Github, href: "https://github.com/hackclubsbs" },
-                { icon: MessageCircle, href: "https://discord.gg/hackclubsbs" },
-                { icon: Instagram, href: "https://instagram.com/hackclubsbs" },
-                { icon: Linkedin, href: "https://linkedin.com/company/hackclubsbs" },
-                { icon: Twitter, href: "https://twitter.com/hackclubsbs" },
+                { icon: GithubLogo, href: "https://github.com/hackclubsbs" },
+                { icon: DiscordLogo, href: "https://discord.gg/XP72PfRYEw" },
+                { icon: InstagramLogo, href: "https://instagram.com/hackclubsbs" },
+                { icon: LinkedinLogo, href: "https://linkedin.com/company/hackclubsbs" },
+                { icon: TwitterLogo, href: "https://x.com/hackclubsbs" },
+                { icon: WhatsappLogo, href: "https://chat.whatsapp.com/DVF3LM8JmnG0Kg9hwwcjIG" }, // WhatsApp
               ].map((social, index) => (
                 <a
                   key={index}
@@ -38,7 +40,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-hackclub-red transition-colors"
                 >
-                  <social.icon className="h-5 w-5" />
+                  <social.icon className="h-5 w-5" weight="fill" />
                 </a>
               ))}
             </div>
@@ -52,7 +54,6 @@ export function Footer() {
                 { name: "About Us", href: "#about" },
                 { name: "Projects", href: "#projects" },
                 { name: "Events", href: "#events" },
-                // { name: "Gallery", href: "#gallery" },
                 { name: "Join Us", href: "#social" },
               ].map((link) => (
                 <li key={link.name}>
@@ -65,13 +66,13 @@ export function Footer() {
           </div>
 
           {/* Contact */}
-           <div>
+          <div>
             <h3 className="font-semibold mb-4">Contact</h3>
             <ul className="space-y-2 text-muted-foreground">
               <li>Shanti Business School,</li>
               <li>Ahmedabad</li>
             </ul>
-          </div> 
+          </div>
         </div>
 
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
