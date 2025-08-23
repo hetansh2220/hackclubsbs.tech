@@ -12,7 +12,7 @@ const projects = [
       "A modern, responsive website built for HackClubSBS to showcase projects, events, and student achievements while fostering a vibrant coding community.",
     technologies: ["Next.js", "Tailwind CSS", "Shadcn UI", "TypeScript"],
     github: "https://github.com/HackClubSBS/hackclubsbs.tech",
-    demo: "#",
+    demo: "https://www.hackclubsbs.tech/",
     featured: true,
   },
 ]
