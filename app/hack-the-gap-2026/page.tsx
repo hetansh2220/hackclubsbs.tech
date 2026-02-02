@@ -130,16 +130,16 @@ export default function HackTheGap2026Page() {
 
   return (
     <main className="min-h-screen bg-background">
-      {/* Hero Header */}
+
       <div className="relative overflow-hidden bg-gradient-to-b from-hackclub-red/10 via-background to-background">
-        {/* Background Pattern */}
+
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-hackclub-red/10 rounded-full blur-3xl" />
           <div className="absolute top-20 -left-40 w-80 h-80 bg-orange-500/10 rounded-full blur-3xl" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16">
-          {/* Back Button */}
+
           <Link
             href="/#hack-the-gap"
             className={`inline-flex items-center gap-2 text-muted-foreground hover:text-hackclub-red transition-colors mb-8 group ${
@@ -150,7 +150,7 @@ export default function HackTheGap2026Page() {
             <span>Back to Home</span>
           </Link>
 
-          {/* Event Header */}
+
           <div className={`transition-all duration-700 delay-100 ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}>
@@ -171,7 +171,7 @@ export default function HackTheGap2026Page() {
               Two tracks: Software and Open Innovation/Hardware, with 6 winning teams.
             </p>
 
-            {/* Event Stats */}
+
             <div className="flex flex-wrap gap-6 mb-8">
               <div className="flex items-center gap-2 text-foreground">
                 <Calendar className="w-5 h-5 text-hackclub-red" />
@@ -202,9 +202,9 @@ export default function HackTheGap2026Page() {
         </div>
       </div>
 
-      {/* Gallery Section */}
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        {/* Category Filters */}
+
         <div className={`flex flex-wrap gap-2 mb-8 transition-all duration-700 delay-200 ${
           isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}>
@@ -230,7 +230,7 @@ export default function HackTheGap2026Page() {
           ))}
         </div>
 
-        {/* Photo Grid */}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredPhotos.map((photo, index) => (
             <div
@@ -250,10 +250,10 @@ export default function HackTheGap2026Page() {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
 
-                {/* Overlay */}
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                {/* Category Badge */}
+
                 <div className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 ${
                   photo.category === "opening" ? "bg-purple-500/90 text-white" :
                   photo.category === "judging" ? "bg-blue-500/90 text-white" :
@@ -266,12 +266,12 @@ export default function HackTheGap2026Page() {
                   {photo.category === "final" && "Final Photo"}
                 </div>
 
-                {/* Caption */}
+
                 <div className="absolute bottom-0 left-0 right-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
                   <p className="text-sm font-medium">{photo.alt}</p>
                 </div>
 
-                {/* Corner accent */}
+
                 <div className="absolute top-0 right-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-hackclub-red rounded-tr-lg" />
                 </div>
@@ -281,14 +281,14 @@ export default function HackTheGap2026Page() {
         </div>
       </div>
 
-      {/* Lightbox */}
+
       {selectedIndex !== null && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm"
           onClick={() => setSelectedIndex(null)}
         >
           <div className="relative w-full h-full flex items-center justify-center p-4" onClick={(e) => e.stopPropagation()}>
-            {/* Close button */}
+
             <Button
               variant="ghost"
               size="icon"
@@ -298,7 +298,7 @@ export default function HackTheGap2026Page() {
               <X className="h-6 w-6" />
             </Button>
 
-            {/* Navigation */}
+
             <Button
               variant="ghost"
               size="icon"
