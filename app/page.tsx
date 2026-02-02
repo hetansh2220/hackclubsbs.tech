@@ -7,6 +7,7 @@ import { AboutSection } from "@/components/about-section"
 import { ProjectsSection } from "@/components/projects-section"
 import { EventsSection } from "@/components/events-section"
 import { GallerySection } from "@/components/gallery-section"
+import { HackTheGapSection } from "@/components/hack-the-gap-section"
 import { JoinUsSection } from "@/components/join-us-section"
 import { SocialHubSection } from "@/components/social-hub-section"
 import { Footer } from "@/components/footer"
@@ -36,6 +37,7 @@ export default function Home() {
       <AboutSection />
       <ProjectsSection />
       <EventsSection />
+      <HackTheGapSection />
       {/* <GallerySection /> */}
       {/* <JoinUsSection /> */}
       <SocialHubSection />
