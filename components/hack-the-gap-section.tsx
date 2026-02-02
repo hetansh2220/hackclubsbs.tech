@@ -70,7 +70,7 @@ export function HackTheGapSection() {
             {/* Card Background Image */}
             <div className="relative h-[400px] sm:h-[500px] overflow-hidden">
               <img
-                src="/hack-the-gap-2026/PXL_20260130_124937356.jpg"
+                src="https://res.cloudinary.com/dr2qmyios/image/upload/f_auto,q_auto,w_1200,c_limit/hack-the-gap-2026/PXL_20260130_124937356.jpg"
                 alt="Hack The Gap 2026 - Final Group Photo"
                 className={`w-full h-full object-cover transition-transform duration-700 ${
                   isHovered ? "scale-110" : "scale-100"
@@ -104,7 +104,7 @@ export function HackTheGapSection() {
 
               {/* Event Description */}
               <p className="text-white/80 text-base sm:text-lg mb-4 max-w-xl">
-                An inter-college hackathon bridging gaps in technology with Software and Open Innovation tracks
+                An inter-college hackathon bridging gaps in technology
               </p>
 
               {/* Event Stats */}

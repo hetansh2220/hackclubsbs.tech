@@ -5,8 +5,17 @@ import Link from "next/link"
 import { ArrowLeft, X, ChevronLeft, ChevronRight, Calendar, MapPin, Users, Trophy, Code, Lightbulb } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-function ImageWithSkeleton({ src, alt, className }: { src: string; alt: string; className?: string }) {
+// Cloudinary optimization helper - adds transformations for faster loading
+function getOptimizedUrl(src: string, size: "thumb" | "full" = "thumb") {
+  const transforms = size === "thumb"
+    ? "f_auto,q_auto,w_600,c_limit" // Auto format, auto quality, max 600px width for thumbnails
+    : "f_auto,q_auto,w_1400,c_limit" // Auto format, auto quality, max 1400px for lightbox
+  return src.replace("/image/upload/", `/image/upload/${transforms}/`)
+}
+
+function ImageWithSkeleton({ src, alt, className, size = "thumb" }: { src: string; alt: string; className?: string; size?: "thumb" | "full" }) {
   const [isLoading, setIsLoading] = useState(true)
+  const optimizedSrc = getOptimizedUrl(src, size)
 
   return (
     <div className="relative w-full h-full">
@@ -16,10 +25,11 @@ function ImageWithSkeleton({ src, alt, className }: { src: string; alt: string; 
         </div>
       )}
       <img
-        src={src}
+        src={optimizedSrc}
         alt={alt}
         className={`${className} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
         onLoad={() => setIsLoading(false)}
+        loading="lazy"
       />
     </div>
   )
@@ -33,64 +43,66 @@ interface Photo {
   category: Category
 }
 
+const CLOUDINARY_BASE = "https://res.cloudinary.com/dr2qmyios/image/upload/hack-the-gap-2026"
+
 const photos: Photo[] = [
   // Opening Ceremony
-  { src: "/hack-the-gap-2026/PXL_20260130_042643797.jpg", alt: "Hack The Gap 2026", category: "opening" },
-  { src: "/hack-the-gap-2026/PXL_20260130_043424010.jpg", alt: "Hack The Gap 2026", category: "opening" },
-  { src: "/hack-the-gap-2026/PXL_20260130_043446535.jpg", alt: "Hack The Gap 2026", category: "opening" },
-  { src: "/hack-the-gap-2026/PXL_20260130_043450760.jpg", alt: "Hack The Gap 2026", category: "opening" },
-  { src: "/hack-the-gap-2026/PXL_20260130_044815018.jpg", alt: "Hack The Gap 2026", category: "opening" },
-  { src: "/hack-the-gap-2026/IMG_20260130_095408.jpg", alt: "Hack The Gap 2026", category: "opening" },
-  { src: "/hack-the-gap-2026/IMG_20260130_095508.jpg", alt: "Hack The Gap 2026", category: "opening" },
-  { src: "/hack-the-gap-2026/IMG_20260130_095557.jpg", alt: "Hack The Gap 2026", category: "opening" },
-  { src: "/hack-the-gap-2026/IMG_20260130_095604.jpg", alt: "Hack The Gap 2026", category: "opening" },
-  { src: "/hack-the-gap-2026/IMG_20260130_095610.jpg", alt: "Hack The Gap 2026", category: "opening" },
-  { src: "/hack-the-gap-2026/IMG_20260130_095746.jpg", alt: "Hack The Gap 2026", category: "opening" },
-  { src: "/hack-the-gap-2026/IMG_20260130_100209.jpg", alt: "Hack The Gap 2026", category: "opening" },
-  { src: "/hack-the-gap-2026/IMG_20260130_100943.jpg", alt: "Hack The Gap 2026", category: "opening" },
-  { src: "/hack-the-gap-2026/IMG_0885.JPG", alt: "Hack The Gap 2026", category: "opening" },
+  { src: `${CLOUDINARY_BASE}/PXL_20260130_042643797.jpg`, alt: "Hack The Gap 2026", category: "opening" },
+  { src: `${CLOUDINARY_BASE}/PXL_20260130_043424010.jpg`, alt: "Hack The Gap 2026", category: "opening" },
+  { src: `${CLOUDINARY_BASE}/PXL_20260130_043446535.jpg`, alt: "Hack The Gap 2026", category: "opening" },
+  { src: `${CLOUDINARY_BASE}/PXL_20260130_043450760.jpg`, alt: "Hack The Gap 2026", category: "opening" },
+  { src: `${CLOUDINARY_BASE}/PXL_20260130_044815018.jpg`, alt: "Hack The Gap 2026", category: "opening" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_095408.jpg`, alt: "Hack The Gap 2026", category: "opening" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_095508.jpg`, alt: "Hack The Gap 2026", category: "opening" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_095557.jpg`, alt: "Hack The Gap 2026", category: "opening" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_095604.jpg`, alt: "Hack The Gap 2026", category: "opening" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_095610.jpg`, alt: "Hack The Gap 2026", category: "opening" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_095746.jpg`, alt: "Hack The Gap 2026", category: "opening" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_100209.jpg`, alt: "Hack The Gap 2026", category: "opening" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_100943.jpg`, alt: "Hack The Gap 2026", category: "opening" },
+  { src: `${CLOUDINARY_BASE}/IMG_0885.jpg`, alt: "Hack The Gap 2026", category: "opening" },
 
   // Judging Rounds
-  { src: "/hack-the-gap-2026/IMG_0904.JPG", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_0907.JPG", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_0911.JPG", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_0916.JPG", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_0921.JPG", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_0925.JPG", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_0931.JPG", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_0941.JPG", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_0949.JPG", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_0950.JPG", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_0951.JPG", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_0956.JPG", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_0966.JPG", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_0972.JPG", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_0975.JPG", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_20260130_112031.jpg", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_20260130_112149.jpg", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_20260130_114049.jpg", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_20260130_114319.jpg", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_20260130_114336.jpg", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_20260130_114930.jpg", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_20260130_114934.jpg", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_20260130_115216.jpg", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_20260130_115337.jpg", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_20260130_132318.jpg", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_20260130_161742.jpg", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_20260130_165616.jpg", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/PXL_20260130_055034513.jpg", alt: "Hack The Gap 2026", category: "judging" },
-  { src: "/hack-the-gap-2026/IMG_0981.JPG", alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_0904.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_0907.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_0911.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_0916.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_0921.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_0925.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_0931.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_0941.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_0949.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_0950.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_0951.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_0956.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_0966.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_0972.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_0975.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_112031.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_112149.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_114049.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_114319.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_114336.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_114930.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_114934.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_115216.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_115337.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_132318.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_161742.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_20260130_165616.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/PXL_20260130_055034513.jpg`, alt: "Hack The Gap 2026", category: "judging" },
+  { src: `${CLOUDINARY_BASE}/IMG_0981.jpg`, alt: "Hack The Gap 2026", category: "judging" },
 
   // Prize Distribution
-  { src: "/hack-the-gap-2026/PXL_20260130_122931784.jpg", alt: "Hack The Gap 2026", category: "prizes" },
-  { src: "/hack-the-gap-2026/PXL_20260130_123047155.jpg", alt: "Hack The Gap 2026", category: "prizes" },
-  { src: "/hack-the-gap-2026/PXL_20260130_123159643.jpg", alt: "Hack The Gap 2026", category: "prizes" },
-  { src: "/hack-the-gap-2026/PXL_20260130_123332344.jpg", alt: "Hack The Gap 2026", category: "prizes" },
-  { src: "/hack-the-gap-2026/PXL_20260130_123433786.jpg", alt: "Hack The Gap 2026", category: "prizes" },
-  { src: "/hack-the-gap-2026/PXL_20260130_123537650.jpg", alt: "Hack The Gap 2026", category: "prizes" },
+  { src: `${CLOUDINARY_BASE}/PXL_20260130_122931784.jpg`, alt: "Hack The Gap 2026", category: "prizes" },
+  { src: `${CLOUDINARY_BASE}/PXL_20260130_123047155.jpg`, alt: "Hack The Gap 2026", category: "prizes" },
+  { src: `${CLOUDINARY_BASE}/PXL_20260130_123159643.jpg`, alt: "Hack The Gap 2026", category: "prizes" },
+  { src: `${CLOUDINARY_BASE}/PXL_20260130_123332344.jpg`, alt: "Hack The Gap 2026", category: "prizes" },
+  { src: `${CLOUDINARY_BASE}/PXL_20260130_123433786.jpg`, alt: "Hack The Gap 2026", category: "prizes" },
+  { src: `${CLOUDINARY_BASE}/PXL_20260130_123537650.jpg`, alt: "Hack The Gap 2026", category: "prizes" },
 
   // Final Group Photo
-  { src: "/hack-the-gap-2026/PXL_20260130_124937356.jpg", alt: "Hack The Gap 2026", category: "final" },
+  { src: `${CLOUDINARY_BASE}/PXL_20260130_124937356.jpg`, alt: "Hack The Gap 2026", category: "final" },
 ]
 
 const categories = [
@@ -352,6 +364,7 @@ export default function HackTheGap2026Page() {
                 src={filteredPhotos[selectedIndex].src}
                 alt={filteredPhotos[selectedIndex].alt}
                 className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+                size="full"
               />
 
               {/* Caption */}
