@@ -35,6 +35,31 @@ function ImageWithSkeleton({ src, alt, className, size = "thumb" }: { src: strin
   )
 }
 
+// Lightbox image with instant thumbnail display + progressive HD loading
+function LightboxImage({ src, alt, className }: { src: string; alt: string; className?: string }) {
+  const [hdLoaded, setHdLoaded] = useState(false)
+  const thumbSrc = getOptimizedUrl(src, "thumb")
+  const hdSrc = getOptimizedUrl(src, "full")
+
+  return (
+    <div className="relative">
+      {/* Show thumbnail immediately (already cached from gallery) */}
+      <img
+        src={thumbSrc}
+        alt={alt}
+        className={`${className} ${hdLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+      />
+      {/* HD image loads on top */}
+      <img
+        src={hdSrc}
+        alt={alt}
+        className={`${className} absolute inset-0 ${hdLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}
+        onLoad={() => setHdLoaded(true)}
+      />
+    </div>
+  )
+}
+
 type Category = "all" | "opening" | "judging" | "prizes" | "final"
 
 interface Photo {
@@ -151,6 +176,23 @@ export default function HackTheGap2026Page() {
       document.body.style.overflow = "unset"
     }
   }, [selectedIndex, filteredPhotos.length])
+
+  // Preload adjacent images for instant navigation
+  useEffect(() => {
+    if (selectedIndex === null) return
+
+    const preloadImage = (index: number) => {
+      const img = new Image()
+      img.src = getOptimizedUrl(filteredPhotos[index].src, "full")
+    }
+
+    // Preload next and previous images
+    const nextIndex = (selectedIndex + 1) % filteredPhotos.length
+    const prevIndex = (selectedIndex - 1 + filteredPhotos.length) % filteredPhotos.length
+
+    preloadImage(nextIndex)
+    preloadImage(prevIndex)
+  }, [selectedIndex, filteredPhotos])
 
   const nextImage = () => {
     setSelectedIndex((prev) => (prev! + 1) % filteredPhotos.length)
@@ -358,13 +400,13 @@ export default function HackTheGap2026Page() {
               <ChevronRight className="h-8 w-8" />
             </Button>
 
-            {/* Image */}
+            {/* Image - Shows thumbnail instantly, then fades in HD */}
             <div className="relative max-w-6xl max-h-[85vh]">
-              <ImageWithSkeleton
+              <LightboxImage
+                key={filteredPhotos[selectedIndex].src}
                 src={filteredPhotos[selectedIndex].src}
                 alt={filteredPhotos[selectedIndex].alt}
                 className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
-                size="full"
               />
 
               {/* Caption */}
