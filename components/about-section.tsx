@@ -35,23 +35,15 @@ const features = [
 
 const teamMembers = [
   {
-    name: "Prof. Reena Paswan",
-    role: "Mentor",
-    description: "A dedicated mentor fostering innovation, discipline, and excellence.",
-  },
-  {
-    name: "Hetansh Sachaniya",
-    role: "Founder",
-    description: "Frontend engineer and community builder, leading HackClubSBS toward creativity and impact.",
-  },
-  {
     name: "Darsh Bhatt",
-    role: "Co-Founder",
     description: "Backend engineer focused on scalable systems and cloud architecture.",
   },
   {
+    name: "Hetansh Sachaniya",
+    description: "Frontend developer and community builder, leading HackClubSBS toward creativity and impact.",
+  },
+  {
     name: "Dhrumil Dholakiya",
-    role: "Co-Founder",
     description: "UX designer and community builder dedicated to inclusive tech spaces.",
   },
 ]
@@ -123,11 +115,11 @@ export function AboutSection() {
           <h3 className="text-3xl font-bold text-center mb-12">
             Meet Our <span className="text-hackclub-red">Team</span>
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {teamMembers.map((member, index) => (
               <Card
                 key={member.name}
-                className={`group hover:shadow-lg hover:shadow-hackclub-red/10 transition-all duration-300 hover:scale-105 border-border/50 hover:border-hackclub-red/30 ${
+                className={`group hover:shadow-lg hover:shadow-hackclub-red/10 transition-all duration-300 hover:scale-105 border-border/50 hover:border-hackclub-red/30 w-full sm:w-72 ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 }`}
                 style={{ transitionDelay: `${600 + index * 100}ms` }}
@@ -141,10 +133,9 @@ export function AboutSection() {
                         .join("")}
                     </span>
                   </div>
-                  <h4 className="text-lg font-semibold mb-1 group-hover:text-hackclub-red transition-colors">
+                  <h4 className="text-lg font-semibold mb-2 group-hover:text-hackclub-red transition-colors">
                     {member.name}
                   </h4>
-                  <p className="text-hackclub-red text-sm font-medium mb-2">{member.role}</p>
                   <p className="text-muted-foreground text-sm leading-relaxed">{member.description}</p>
                 </CardContent>
               </Card>

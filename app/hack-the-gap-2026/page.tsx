@@ -5,6 +5,26 @@ import Link from "next/link"
 import { ArrowLeft, X, ChevronLeft, ChevronRight, Calendar, MapPin, Users, Trophy, Code, Lightbulb } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
+function ImageWithSkeleton({ src, alt, className }: { src: string; alt: string; className?: string }) {
+  const [isLoading, setIsLoading] = useState(true)
+
+  return (
+    <div className="relative w-full h-full">
+      {isLoading && (
+        <div className="absolute inset-0 bg-muted animate-pulse">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skeleton-shimmer" />
+        </div>
+      )}
+      <img
+        src={src}
+        alt={alt}
+        className={`${className} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+        onLoad={() => setIsLoading(false)}
+      />
+    </div>
+  )
+}
+
 type Category = "all" | "opening" | "judging" | "prizes" | "final"
 
 interface Photo {
@@ -130,6 +150,15 @@ export default function HackTheGap2026Page() {
 
   return (
     <main className="min-h-screen bg-background">
+      <style jsx global>{`
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        .skeleton-shimmer {
+          animation: shimmer 1.5s infinite;
+        }
+      `}</style>
 
       <div className="relative overflow-hidden bg-gradient-to-b from-hackclub-red/10 via-background to-background">
 
@@ -244,7 +273,7 @@ export default function HackTheGap2026Page() {
               <div className={`relative overflow-hidden ${
                 photo.category === "final" ? "h-[300px] sm:h-[400px]" : "h-[250px] sm:h-[300px]"
               }`}>
-                <img
+                <ImageWithSkeleton
                   src={photo.src}
                   alt={photo.alt}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -319,7 +348,7 @@ export default function HackTheGap2026Page() {
 
             {/* Image */}
             <div className="relative max-w-6xl max-h-[85vh]">
-              <img
+              <ImageWithSkeleton
                 src={filteredPhotos[selectedIndex].src}
                 alt={filteredPhotos[selectedIndex].alt}
                 className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
