@@ -1,8 +1,7 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { useRef } from "react"
+import { motion, useInView } from "motion/react"
 import { ExternalLink, Github, Star } from "lucide-react"
 
 const projects = [
@@ -18,116 +17,103 @@ const projects = [
 ]
 
 export function ProjectsSection() {
-  const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.1 },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
 
   return (
-    <section ref={sectionRef} id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section ref={sectionRef} id="projects" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
+      {/* Top divider — diagonal stripe */}
+      <div className="absolute top-0 left-0 right-0 h-1 diagonal-stripes opacity-30" />
+
       <div className="max-w-7xl mx-auto">
-        {/* Section Heading */}
-        <div
-          className={`text-center mb-16 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            Our <span className="text-hackclub-red">Projects</span>
+          <span className="sticker text-[10px] mb-4 inline-block">What we shipped</span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter leading-[0.9] mt-4">
+            Our{" "}
+            <span className="text-hackclub-red italic">Projects</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Discover the innovative solutions our members have built. From AI-powered applications to sustainability
-            tools, our projects showcase the creativity and technical skills of our community.
+          <p className="mt-4 text-muted-foreground max-w-xl text-base leading-relaxed">
+            From concept to launch — real products built by real students.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <Card
-              key={project.title}
-              className={`group hover:shadow-xl hover:shadow-hackclub-red/10 transition-all duration-500 hover:scale-105 border-border/50 hover:border-hackclub-red/30 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-hackclub-red transition-colors flex items-center justify-between">
-                  {project.title}
-                  {project.featured && (
-                    <span className="bg-hackclub-red text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
-                      <Star className="h-3 w-3 fill-current" /> Featured
-                    </span>
-                  )}
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.description}</p>
-
-                {/* Tech stack */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-1 bg-muted text-muted-foreground text-xs rounded-md group-hover:bg-hackclub-red/10 group-hover:text-hackclub-red transition-colors"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Buttons */}
-                <div className="flex gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="flex-1 border-hackclub-red/30 text-hackclub-red hover:bg-hackclub-red hover:text-white transition-all bg-transparent"
-                    asChild
-                  >
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      <Github className="h-4 w-4 mr-2" />
-                      Code
-                    </a>
-                  </Button>
-                  <Button size="sm" className="flex-1 bg-hackclub-red hover:bg-hackclub-red/90 text-white" asChild>
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Demo
-                    </a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* View All Button */}
-        <div
-          className={`text-center mt-12 transition-all duration-1000 delay-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          {/* <Button
-            variant="outline"
-            size="lg"
-            className="border-hackclub-red text-hackclub-red hover:bg-hackclub-red hover:text-white px-8 py-3 text-lg font-semibold rounded-xl hover:scale-105 transition-all duration-200 bg-transparent"
+        {/* Featured Project — hero card */}
+        {projects.map((project) => (
+          <motion.div
+            key={project.title}
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.2 }}
           >
-            View All Projects
-          </Button> */}
-        </div>
+            <div className="group border-3 border-foreground bg-card relative hover:shadow-[8px_8px_0_var(--hackclub-red)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
+              {/* Featured stamp */}
+              {project.featured && (
+                <div className="absolute -top-4 -right-4 z-10">
+                  <div className="bg-hackclub-yellow text-hackclub-dark px-3 py-1.5 font-black text-xs uppercase tracking-wider rotate-3 shadow-[2px_3px_0_rgba(0,0,0,0.2)] flex items-center gap-1.5">
+                    <Star className="w-3 h-3 fill-current" />
+                    Featured
+                  </div>
+                </div>
+              )}
+
+              <div className="p-8 sm:p-10 lg:p-12">
+                <div className="flex flex-col lg:flex-row lg:items-start gap-8">
+                  {/* Left — info */}
+                  <div className="flex-1">
+                    <h3 className="text-3xl sm:text-4xl font-black tracking-tight mb-4 group-hover:text-hackclub-red transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed mb-6 max-w-lg">
+                      {project.description}
+                    </p>
+
+                    {/* Tech stack badges */}
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech, i) => (
+                        <span
+                          key={tech}
+                          className={`inline-block border-2 border-foreground px-3 py-1 text-xs font-bold uppercase tracking-wider ${
+                            i % 2 === 0 ? "-rotate-1" : "rotate-1"
+                          } hover:bg-hackclub-red hover:text-white hover:border-hackclub-red transition-colors cursor-default`}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Right — actions */}
+                  <div className="flex lg:flex-col gap-3 shrink-0">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-foreground text-background px-6 py-3 text-xs font-black uppercase tracking-wider hover:bg-hackclub-red hover:shadow-[4px_4px_0_var(--foreground)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-200"
+                    >
+                      <Github className="w-4 h-4" />
+                      Source
+                    </a>
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-hackclub-red text-white px-6 py-3 text-xs font-black uppercase tracking-wider hover:shadow-[4px_4px_0_var(--foreground)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-200"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Live Demo
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   )

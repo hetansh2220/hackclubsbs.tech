@@ -3,82 +3,88 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ╔══════════════════════════════════════════════╗
+   ║  HACKCLUBSBS — PUNK ZINE × SWISS POSTER     ║
+   ║  High-energy editorial design system         ║
+   ╚══════════════════════════════════════════════╝ */
+
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --background: #faf5ee;
+  --foreground: #0d0d0d;
+  --card: #fff8f0;
+  --card-foreground: #0d0d0d;
+  --popover: #faf5ee;
+  --popover-foreground: #0d0d0d;
+  --primary: #0d0d0d;
+  --primary-foreground: #faf5ee;
+  --secondary: #f0ebe3;
+  --secondary-foreground: #0d0d0d;
+  --muted: #f0ebe3;
+  --muted-foreground: #7a7067;
+  --accent: #f0ebe3;
+  --accent-foreground: #0d0d0d;
+  --destructive: #ec3750;
+  --destructive-foreground: #ffffff;
+  --border: #e0d8cc;
+  --input: #e0d8cc;
+  --ring: #ec3750;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-  /* Added HackClubSBS brand color #ec3750 */
+  --radius: 0px;
+  --sidebar: #f0ebe3;
+  --sidebar-foreground: #0d0d0d;
+  --sidebar-primary: #0d0d0d;
+  --sidebar-primary-foreground: #faf5ee;
+  --sidebar-accent: #f0ebe3;
+  --sidebar-accent-foreground: #0d0d0d;
+  --sidebar-border: #e0d8cc;
+  --sidebar-ring: #ec3750;
   --hackclub-red: #ec3750;
-  /* Updated font family variables to use Poppins instead of Inter */
-  --font-poppins: "Poppins", sans-serif;
-  --font-jetbrains-mono: "JetBrains Mono", monospace;
+  --hackclub-yellow: #ffbd2e;
+  --hackclub-dark: #0d0d0d;
+  --hackclub-cream: #faf5ee;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
+  --background: #0d0d0d;
+  --foreground: #faf5ee;
+  --card: #151515;
+  --card-foreground: #faf5ee;
+  --popover: #0d0d0d;
+  --popover-foreground: #faf5ee;
+  --primary: #faf5ee;
+  --primary-foreground: #0d0d0d;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #faf5ee;
+  --muted: #1a1a1a;
+  --muted-foreground: #9a9088;
+  --accent: #1a1a1a;
+  --accent-foreground: #faf5ee;
+  --destructive: #ec3750;
+  --destructive-foreground: #ffffff;
+  --border: #2a2520;
+  --input: #2a2520;
+  --ring: #ec3750;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
-  /* Added HackClubSBS brand color for dark mode */
+  --sidebar: #151515;
+  --sidebar-foreground: #faf5ee;
+  --sidebar-primary: #faf5ee;
+  --sidebar-primary-foreground: #0d0d0d;
+  --sidebar-accent: #1a1a1a;
+  --sidebar-accent-foreground: #faf5ee;
+  --sidebar-border: #2a2520;
+  --sidebar-ring: #ec3750;
   --hackclub-red: #ec3750;
+  --hackclub-yellow: #ffbd2e;
+  --hackclub-dark: #0d0d0d;
+  --hackclub-cream: #faf5ee;
 }
 
 @theme inline {
@@ -106,10 +112,10 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: 0px;
+  --radius-md: 2px;
+  --radius-lg: 4px;
+  --radius-xl: 8px;
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -118,11 +124,12 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  /* Added HackClubSBS brand color to theme */
   --color-hackclub-red: var(--hackclub-red);
-  /* Updated font family variables to use Poppins */
-  --font-sans: var(--font-poppins);
-  --font-mono: var(--font-jetbrains-mono);
+  --color-hackclub-yellow: var(--hackclub-yellow);
+  --color-hackclub-dark: var(--hackclub-dark);
+  --color-hackclub-cream: var(--hackclub-cream);
+  --font-sans: "Figtree", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
 @layer base {
@@ -134,168 +141,204 @@
   }
 }
 
-/* Added smooth scrolling for navigation */
 html {
   scroll-behavior: smooth;
 }
 
-/* Enhanced custom utility classes and animations for HackClubSBS branding */
-@layer utilities {
-  .text-hackclub-red {
-    color: var(--hackclub-red);
-  }
-
-  .bg-hackclub-red {
-    background-color: var(--hackclub-red);
-  }
-
-  .border-hackclub-red {
-    border-color: var(--hackclub-red);
-  }
-
-  /* Advanced animation utilities */
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .animate-glow {
-    animation: glow 2s ease-in-out infinite alternate;
-  }
-
-  .animate-slide-up {
-    animation: slideUp 0.6s ease-out forwards;
-  }
-
-  .animate-fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
-  }
-
-  .animate-scale-in {
-    animation: scaleIn 0.5s ease-out forwards;
-  }
-
-  .animate-bounce-subtle {
-    animation: bounceSubtle 2s ease-in-out infinite;
-  }
-
-  /* Enhanced scroll-based animations */
-  .animate-slide-in-from-left {
-    animation: slideInFromLeft 0.6s ease-out forwards;
-  }
-
-  .animate-slide-in-from-right {
-    animation: slideInFromRight 0.6s ease-out forwards;
-  }
-}
-
-/* Added keyframe animations for enhanced user experience */
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes glow {
-  from {
-    box-shadow: 0 0 20px rgba(236, 55, 80, 0.3);
-  }
-  to {
-    box-shadow: 0 0 30px rgba(236, 55, 80, 0.6);
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes bounceSubtle {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-@keyframes slideInFromLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInFromRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Custom scrollbar styling */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--background);
-}
-
-::-webkit-scrollbar-thumb {
+/* ═══ SELECTION ═══ */
+::selection {
   background: var(--hackclub-red);
-  border-radius: 4px;
+  color: white;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: color-mix(in srgb, var(--hackclub-red) 80%, black);
-}
+/* ═══ SCROLLBAR ═══ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb { background: var(--hackclub-red); }
 
-/* Enhanced focus states for accessibility */
+/* ═══ FOCUS ═══ */
 *:focus-visible {
-  outline: 2px solid var(--hackclub-red);
+  outline: 3px solid var(--hackclub-red);
   outline-offset: 2px;
 }
 
-/* Smooth transitions for theme switching */
-* {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+/* ═══════════════════════════
+   KEYFRAMES — THE ZINE ENERGY
+   ═══════════════════════════ */
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-6px) rotate(0.5deg); }
+  66% { transform: translateY(2px) rotate(-0.3deg); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(1deg); }
+}
+
+@keyframes dash-march {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 20; }
+}
+
+@keyframes tape-peel {
+  0% { transform: rotate(-2deg) scale(1); }
+  50% { transform: rotate(-1deg) scale(1.02); }
+  100% { transform: rotate(-2deg) scale(1); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes pop-in {
+  0% { transform: scale(0.8) rotate(-3deg); opacity: 0; }
+  70% { transform: scale(1.05) rotate(1deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes slide-up {
+  0% { transform: translateY(60px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  0% { transform: translateX(40px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes stamp {
+  0% { transform: scale(2) rotate(-12deg); opacity: 0; }
+  60% { transform: scale(0.95) rotate(-3deg); opacity: 1; }
+  100% { transform: scale(1) rotate(-3deg); opacity: 1; }
+}
+
+/* ═══ UTILITY CLASSES ═══ */
+
+@layer utilities {
+  .text-hackclub-red { color: var(--hackclub-red); }
+  .bg-hackclub-red { background-color: var(--hackclub-red); }
+  .border-hackclub-red { border-color: var(--hackclub-red); }
+  .text-hackclub-yellow { color: var(--hackclub-yellow); }
+  .bg-hackclub-yellow { background-color: var(--hackclub-yellow); }
+
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+  }
+  .animate-float {
+    animation: float 5s ease-in-out infinite;
+  }
+  .animate-wiggle {
+    animation: wiggle 3s ease-in-out infinite;
+  }
+  .animate-pop-in {
+    animation: pop-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+  .animate-slide-up {
+    animation: slide-up 0.7s ease-out forwards;
+  }
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+  .animate-stamp {
+    animation: stamp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
+
+/* ═══ STICKER BADGE ═══ */
+.sticker {
+  display: inline-block;
+  padding: 0.25em 0.75em;
+  background: var(--hackclub-red);
+  color: white;
+  font-weight: 800;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transform: rotate(-2deg);
+  box-shadow: 2px 3px 0px rgba(0,0,0,0.2);
+  position: relative;
+}
+.sticker::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border: 2px dashed rgba(255,255,255,0.3);
+  pointer-events: none;
+}
+.sticker-yellow {
+  background: var(--hackclub-yellow);
+  color: var(--hackclub-dark);
+}
+
+/* ═══ DIAGONAL STRIPE PATTERN ═══ */
+.diagonal-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 4px,
+    var(--hackclub-red) 4px,
+    var(--hackclub-red) 5px
+  );
+}
+
+/* ═══ DOT GRID PATTERN ═══ */
+.dot-grid {
+  background-image: radial-gradient(circle, var(--hackclub-red) 0.8px, transparent 0.8px);
+  background-size: 20px 20px;
+}
+
+/* ═══ HIGHLIGHT / MARKER EFFECT ═══ */
+.marker-highlight {
+  background: linear-gradient(transparent 55%, var(--hackclub-red) 55%, var(--hackclub-red) 90%, transparent 90%);
+  padding: 0 0.1em;
+}
+.dark .marker-highlight {
+  background: linear-gradient(transparent 55%, var(--hackclub-red) 55%, var(--hackclub-red) 90%, transparent 90%);
+}
+
+/* ═══ TAPE EFFECT ═══ */
+.tape {
+  position: relative;
+}
+.tape::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 60px;
+  height: 16px;
+  background: var(--hackclub-yellow);
+  opacity: 0.85;
+  z-index: 1;
+}
+
+/* ═══ TORN EDGE (top) ═══ */
+.torn-top {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 16'%3E%3Cpath d='M0,16 L0,8 Q30,0 60,8 Q90,16 120,8 Q150,0 180,8 Q210,16 240,8 Q270,0 300,8 Q330,16 360,8 Q390,0 420,8 Q450,16 480,8 Q510,0 540,8 Q570,16 600,8 Q630,0 660,8 Q690,16 720,8 Q750,0 780,8 Q810,16 840,8 Q870,0 900,8 Q930,16 960,8 Q990,0 1020,8 Q1050,16 1080,8 Q1110,0 1140,8 Q1170,16 1200,8 L1200,16 Z' fill='white'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 16'%3E%3Cpath d='M0,16 L0,8 Q30,0 60,8 Q90,16 120,8 Q150,0 180,8 Q210,16 240,8 Q270,0 300,8 Q330,16 360,8 Q390,0 420,8 Q450,16 480,8 Q510,0 540,8 Q570,16 600,8 Q630,0 660,8 Q690,16 720,8 Q750,0 780,8 Q810,16 840,8 Q870,0 900,8 Q930,16 960,8 Q990,0 1020,8 Q1050,16 1080,8 Q1110,0 1140,8 Q1170,16 1200,8 L1200,16 Z' fill='white'/%3E%3C/svg%3E");
+  mask-size: 100% 16px;
+  mask-repeat: no-repeat;
+  mask-position: top;
+  padding-top: 16px;
+}
+
+/* ═══ GRAIN OVERLAY ═══ */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px;
 }

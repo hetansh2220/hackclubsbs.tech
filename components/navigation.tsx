@@ -3,15 +3,13 @@
 import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { Button } from "@/components/ui/button"
+import { motion, AnimatePresence } from "motion/react"
 
 const navItems = [
-  { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Projects", href: "#projects" },
   { name: "Events", href: "#events" },
-  // { name: "Gallery", href: "#gallery" },
-  { name: "Join Us", href: "#social" },
+  { name: "Connect", href: "#social" },
 ]
 
 export function Navigation() {
@@ -22,10 +20,8 @@ export function Navigation() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
-
       const sections = navItems.map((item) => document.querySelector(item.href))
       const scrollPosition = window.scrollY + 150
-
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i] as HTMLElement
         if (section && section.offsetTop <= scrollPosition) {
@@ -34,113 +30,107 @@ export function Navigation() {
         }
       }
     }
-
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false)
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-lg shadow-hackclub-red/5"
+          ? "bg-background/90 backdrop-blur-md border-b-3 border-hackclub-red shadow-[0_4px_0_0_var(--hackclub-red)]"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div
+          {/* Logo — zine style */}
+          <button
             onClick={() => handleNavClick("#home")}
-            className="flex items-baseline text-2xl font-extrabold leading-none tracking-tight cursor-pointer"
+            className="group"
           >
-            <span className=" hover:text-hackclub-red transition-colors duration-300 text-hackclub-red ">
-              HackClubSBS
-            </span>
-            
-          </div>
+            <img src="/logo.png" alt="HackClubSBS" className="w-20 h-20 group-hover:rotate-6 transition-transform duration-200" />
+          </button>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex space-x-6">
+          <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => handleNavClick(item.href)}
-                className={`text-md font-medium transition-all duration-300 hover:text-hackclub-red hover:scale-105 relative group ${
-                  activeSection === item.href.slice(1) ? "text-hackclub-red" : "text-muted-foreground"
+                className={`relative px-3 py-1.5 text-sm font-bold uppercase tracking-wide transition-all duration-200 ${
+                  activeSection === item.href.slice(1)
+                    ? "text-white"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {item.name}
-                <div
-                  className={`absolute -bottom-1 left-0 right-0 h-0.5 bg-hackclub-red rounded-full transition-all duration-300 ${
-                    activeSection === item.href.slice(1)
-                      ? "opacity-100 scale-x-100"
-                      : "opacity-0 scale-x-0 group-hover:opacity-50 group-hover:scale-x-100"
-                  }`}
-                />
+                {activeSection === item.href.slice(1) && (
+                  <motion.div
+                    layoutId="nav-active"
+                    className="absolute inset-0 bg-hackclub-red -skew-x-6"
+                    transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
+                  />
+                )}
+                <span className="relative z-10">{item.name}</span>
               </button>
             ))}
           </div>
 
-          {/* Right Actions */}
-          <div className="flex items-center space-x-4">
+          {/* Right */}
+          <div className="flex items-center gap-3">
             <ThemeToggle />
-            <Button
-              size="sm"
-              className="hidden sm:flex bg-hackclub-red hover:bg-hackclub-red/90 text-white hover:scale-105 transition-all duration-200"
+            <button
+              className="hidden sm:inline-flex bg-foreground text-background px-4 py-2 text-xs font-black uppercase tracking-wider hover:bg-hackclub-red hover:text-white transition-colors duration-200 -skew-x-3 hover:skew-x-0"
               onClick={() => handleNavClick("#social")}
             >
-              Join Now
-            </Button>
-
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
+              Join Us
+            </button>
+            <button
+              className="md:hidden p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
+            </button>
           </div>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
+      {/* Mobile Menu */}
+      <AnimatePresence>
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-16 left-0 right-0 bg-background/98 backdrop-blur-md border-b border-border shadow-xl animate-slide-up">
-            <div className="px-4 py-6 space-y-4">
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden overflow-hidden bg-background border-b-3 border-hackclub-red"
+          >
+            <div className="px-4 py-4 space-y-1">
               {navItems.map((item, index) => (
-                <button
+                <motion.button
                   key={item.name}
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: index * 0.05 }}
                   onClick={() => handleNavClick(item.href)}
-                  className={`block w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 hover:scale-105 ${
+                  className={`block w-full text-left px-4 py-3 text-sm font-bold uppercase tracking-wider transition-colors ${
                     activeSection === item.href.slice(1)
-                      ? "text-hackclub-red bg-hackclub-red/10 shadow-lg"
-                      : "text-muted-foreground hover:text-hackclub-red hover:bg-hackclub-red/5"
+                      ? "bg-hackclub-red text-white -skew-x-3"
+                      : "text-muted-foreground hover:text-foreground hover:pl-6"
                   }`}
-                  style={{ animationDelay: `${index * 50}ms` }}
                 >
                   {item.name}
-                </button>
+                </motion.button>
               ))}
-              <Button
-                size="sm"
-                className="w-full mt-4 bg-hackclub-red hover:bg-hackclub-red/90 text-white hover:scale-105 transition-all duration-200 animate-glow"
-                onClick={() => handleNavClick("#join")}
-              >
-                Join Now
-              </Button>
             </div>
-          </div>
+          </motion.div>
         )}
-      </div>
+      </AnimatePresence>
     </nav>
   )
 }
